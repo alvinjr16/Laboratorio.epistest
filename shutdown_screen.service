@@ -1,0 +1,13 @@
+[Unit]
+Description=runs only upon shutdown
+Before=shutdown.target reboot.target halt.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStop=/bin/bash /etc/shutdown_screen
+KillMode=none
+
+[Install]
+WantedBy=halt.target reboot.target shutdown.target
+
